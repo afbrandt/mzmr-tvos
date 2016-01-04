@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MZMRMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-TX-kGb">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="1080"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9ZV-eo-JPr"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J52-FQ-3Gq">
+                                <rect key="frame" x="99" y="0.0" width="100" height="1080"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ceo-Bj-usB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w7d-TX-kGb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="DNA-vH-26P"/>
+                            <constraint firstItem="J52-FQ-3Gq" firstAttribute="height" secondItem="w7d-TX-kGb" secondAttribute="height" id="HnT-Wn-zWs"/>
+                            <constraint firstItem="J52-FQ-3Gq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JHQ-QD-rIk"/>
+                            <constraint firstItem="J52-FQ-3Gq" firstAttribute="leading" secondItem="w7d-TX-kGb" secondAttribute="trailing" constant="-1" id="QgU-Ko-aNt"/>
+                            <constraint firstItem="w7d-TX-kGb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="mtY-ED-vZs"/>
+                            <constraint firstItem="w7d-TX-kGb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nMQ-xh-egl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="primaryMenu" destination="w7d-TX-kGb" id="Ka3-1v-Mga"/>
+                        <outlet property="primaryMenuLeadingEdge" destination="DNA-vH-26P" id="zAq-IU-9KI"/>
+                        <outlet property="primaryMenuWidth" destination="9ZV-eo-JPr" id="wUt-bf-ej5"/>
+                        <outlet property="secondaryMenu" destination="J52-FQ-3Gq" id="gH7-ZC-u31"/>
+                        <outlet property="secondaryMenuWidth" destination="ceo-Bj-usB" id="Odj-Na-pOY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
