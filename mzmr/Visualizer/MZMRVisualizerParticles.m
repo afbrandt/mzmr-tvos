@@ -1,24 +1,19 @@
 //
-//  MZMRVisualizerOscilloscope.m
+//  MZMRVisualizerParticles.m
 //  mzmr
 //
-//  Created by Andrew Brandt on 1/3/16.
+//  Created by Andrew Brandt on 1/12/16.
 //  Copyright © 2016 Dory Studios. All rights reserved.
 //
 
-#import "MZMRVisualizerOscilloscope.h"
-#import <Accelerate/Accelerate.h>
+#import "MZMRVisualizerParticles.h"
 #include <libkern/OSAtomic.h>
 
-@interface MZMRVisualizerOscilloscope () {
+@interface MZMRVisualizerParticles () {
 
     SAMPLETYPE  *_buffer;
     CGPoint     *_scratchBuffer;
-    CGPoint     *_lastBuffer;
-    int          _lastCount;
     int          _buffer_head;
-    int          _path_head;
-    CGPathRef   *_paths;
     AudioBufferList *_conversionBuffer;
 #if TARGET_OS_IPHONE
     id           _timer;
@@ -28,11 +23,11 @@
 
 }
 @property (nonatomic, strong) AEFloatConverter *floatConverter;
+@property (nonatomic, strong) CAEmitterLayer *emitter;
 
 @end
 
-
-@implementation MZMRVisualizerOscilloscope
+@implementation MZMRVisualizerParticles
 
 - (CALayer *)layer {
     return self;
@@ -46,10 +41,9 @@
     _buffer = (SAMPLETYPE*)calloc(kBufferLength, sizeof(SAMPLETYPE));
     _scratchBuffer = (CGPoint*)malloc(kBufferLength * sizeof(CGPoint));
     
-    _path_head = 0;
 #if TARGET_OS_IPHONE
     self.contentsScale = [[UIScreen mainScreen] scale];
-    self.lineColor = [UIColor redColor];
+    self.lineColor = [UIColor yellowColor];
 #else
     self.lineColor = [NSColor blackColor];
 #endif
@@ -58,6 +52,9 @@
     self.actions = @{@"contents": [NSNull null]};
     
     self.delegate = self;
+    
+    self.emitter = [CAEmitterLayer layer];
+    
     
     return self;
 }
@@ -107,9 +104,12 @@
 
 #pragma mark - Rendering
 
+-(void)update {
+
+}
+
 -(void)drawInContext:(CGContextRef)ctx {
 
-    const UIColor *_lastColor = [UIColor blueColor];
     CGContextSetShouldAntialias(ctx, true);
     
     // Render ring buffer as path
@@ -156,28 +156,13 @@
     
     // Render lines
     CGContextBeginPath(ctx);
-    CGContextSetStrokeColorWithColor(ctx, [_lastColor CGColor]);
-    CGContextAddLines(ctx, (CGPoint*)_lastBuffer, _lastCount);
-    CGContextDrawPath(ctx, kCGPathStroke);
-    
-    CGContextBeginPath(ctx);
-    CGContextMoveToPoint(ctx, 0, 0);
-    CGContextSetStrokeColorWithColor(ctx, [_lineColor CGColor]);
     CGContextAddLines(ctx, (CGPoint*)_scratchBuffer, sampleCount);
-    CGContextDrawPath(ctx, kCGPathStroke);
-    
-    if (_lastBuffer) {
-        free(_lastBuffer);
-    }
-    _lastBuffer = (CGPoint*)malloc(sizeof(CGPoint)*sampleCount);
-    memcpy(_lastBuffer, _scratchBuffer, sizeof(CGPoint)*sampleCount);
-    
-    _lastCount = sampleCount;
+    CGContextStrokePath(ctx);
 }
 
 #pragma mark - Callback
 
-static void audioCallback(__unsafe_unretained MZMRVisualizerOscilloscope *THIS,
+static void audioCallback(__unsafe_unretained MZMRVisualizerParticles *THIS,
                           __unsafe_unretained AEAudioController *audioController,
                           void *source,
                           const AudioTimeStamp *time,

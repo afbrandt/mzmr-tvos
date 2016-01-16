@@ -2,6 +2,6 @@
 
 Music playing application for Apple TV.
 
-![](./mzmr-0-1.gif)
+![](./mzmr-0-2.gif)
 
-Basic visualizer functioning, the bar on the right will become the menu.
+Basic visualizer functioning, the bar on the left is the menu.  Can currently navigate between available visualizers and change them while song plays.

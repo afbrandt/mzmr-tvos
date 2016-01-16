@@ -17,18 +17,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-TX-kGb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-TX-kGb">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="1080"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twv-LC-aMU">
+                                        <rect key="frame" x="0.0" y="150" width="100" height="830"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-EB-O6c">
+                                                <rect key="frame" x="5" y="215" width="90" height="400"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="MJU-Ch-4i0"/>
+                                                </constraints>
+                                                <sections/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="7SP-A5-Ojf"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RKp-M7-6Lu"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zcA-EB-O6c" firstAttribute="centerY" secondItem="twv-LC-aMU" secondAttribute="centerY" id="7I8-Gc-LnJ"/>
+                                            <constraint firstItem="zcA-EB-O6c" firstAttribute="centerX" secondItem="twv-LC-aMU" secondAttribute="centerX" id="ggC-Pj-x8f"/>
+                                            <constraint firstItem="zcA-EB-O6c" firstAttribute="width" secondItem="twv-LC-aMU" secondAttribute="width" constant="-10" id="tqu-SP-Jcg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9ZV-eo-JPr"/>
+                                    <constraint firstItem="twv-LC-aMU" firstAttribute="centerX" secondItem="w7d-TX-kGb" secondAttribute="centerX" id="9em-pt-RIz"/>
+                                    <constraint firstAttribute="bottom" secondItem="twv-LC-aMU" secondAttribute="bottom" constant="100" id="NBY-J6-Q4o"/>
+                                    <constraint firstItem="twv-LC-aMU" firstAttribute="width" secondItem="w7d-TX-kGb" secondAttribute="width" id="i3l-Bu-Cvg"/>
+                                    <constraint firstItem="twv-LC-aMU" firstAttribute="top" secondItem="w7d-TX-kGb" secondAttribute="top" constant="150" id="wnl-qy-8k0"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J52-FQ-3Gq">
-                                <rect key="frame" x="99" y="0.0" width="100" height="1080"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J52-FQ-3Gq">
+                                <rect key="frame" x="110" y="0.0" width="100" height="1080"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="zqj-dY-OHx">
+                                        <rect key="frame" x="5" y="315" width="90" height="450"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="yu6-aI-BtH"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="5eN-q9-ImT"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="zqj-dY-OHx" firstAttribute="centerY" secondItem="J52-FQ-3Gq" secondAttribute="centerY" id="Wdn-Xp-otj"/>
                                     <constraint firstAttribute="width" constant="100" id="ceo-Bj-usB"/>
+                                    <constraint firstItem="zqj-dY-OHx" firstAttribute="centerX" secondItem="J52-FQ-3Gq" secondAttribute="centerX" id="pcT-1j-jQv"/>
+                                    <constraint firstItem="zqj-dY-OHx" firstAttribute="width" secondItem="J52-FQ-3Gq" secondAttribute="width" constant="-10" id="rP6-pW-3lF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -37,16 +78,20 @@
                             <constraint firstItem="w7d-TX-kGb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="DNA-vH-26P"/>
                             <constraint firstItem="J52-FQ-3Gq" firstAttribute="height" secondItem="w7d-TX-kGb" secondAttribute="height" id="HnT-Wn-zWs"/>
                             <constraint firstItem="J52-FQ-3Gq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JHQ-QD-rIk"/>
-                            <constraint firstItem="J52-FQ-3Gq" firstAttribute="leading" secondItem="w7d-TX-kGb" secondAttribute="trailing" constant="-1" id="QgU-Ko-aNt"/>
+                            <constraint firstItem="J52-FQ-3Gq" firstAttribute="leading" secondItem="w7d-TX-kGb" secondAttribute="trailing" constant="10" id="QgU-Ko-aNt"/>
+                            <constraint firstItem="zqj-dY-OHx" firstAttribute="height" secondItem="zcA-EB-O6c" secondAttribute="height" constant="50" id="fiN-UW-OWm"/>
                             <constraint firstItem="w7d-TX-kGb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="mtY-ED-vZs"/>
                             <constraint firstItem="w7d-TX-kGb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nMQ-xh-egl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="primaryMenu" destination="w7d-TX-kGb" id="Ka3-1v-Mga"/>
+                        <outlet property="primaryMenuContainer" destination="twv-LC-aMU" id="AL2-iG-Izs"/>
                         <outlet property="primaryMenuLeadingEdge" destination="DNA-vH-26P" id="zAq-IU-9KI"/>
+                        <outlet property="primaryMenuTable" destination="zcA-EB-O6c" id="id1-Lr-4X6"/>
                         <outlet property="primaryMenuWidth" destination="9ZV-eo-JPr" id="wUt-bf-ej5"/>
                         <outlet property="secondaryMenu" destination="J52-FQ-3Gq" id="gH7-ZC-u31"/>
+                        <outlet property="secondaryMenuTable" destination="zqj-dY-OHx" id="mDa-R8-P1E"/>
                         <outlet property="secondaryMenuWidth" destination="ceo-Bj-usB" id="Odj-Na-pOY"/>
                     </connections>
                 </viewController>
